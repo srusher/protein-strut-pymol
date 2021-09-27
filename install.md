@@ -1,4 +1,4 @@
-# INSTALL GUIDE______________________________________________________
+# INSTALL GUIDE__________________________________________
 
 The requirements - install in order (Ubuntu 20.04)
 
