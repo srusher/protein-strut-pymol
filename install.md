@@ -74,6 +74,7 @@ cmake --install .
 ## I had to manually download this 
 
 -- added alias to ~/.bashrc
+
 alias mkdssp='$HOME/.local/bin/mkdssp'
 ##
 
