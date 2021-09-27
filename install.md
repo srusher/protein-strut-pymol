@@ -55,21 +55,21 @@ https://github.com/PDB-REDO/libcifpp
 # DSSP Install
 ______________________________________________________________________________
 
-1. https://swift.cmbi.umcn.nl/gv/dssp/DSSP_5.html
+https://swift.cmbi.umcn.nl/gv/dssp/DSSP_5.html
 -- information guide
 
-2. https://github.com/PDB-REDO/dssp
+https://github.com/PDB-REDO/dssp
 
-3. builld it
-
-git clone https://github.com/PBD-REDO/dssp.git
-cd dssp
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release
-ctest -C Release
-cmake --install .
+Build it
+	
+	git clone https://github.com/PBD-REDO/dssp.git
+	cd dssp
+	mkdir build
+	cd build
+	cmake ..
+	cmake --build . --config Release
+	ctest -C Release
+	cmake --install .
 
 ## I had to manually download this 
 
