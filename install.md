@@ -80,5 +80,6 @@ alias mkdssp='$HOME/.local/bin/mkdssp'
 # A Quick Test
 
 mkdssp --output-format=mmcif 6xmy.pdb
+
 mkdssp --output-format=dssp 6xmy.pdb
 
