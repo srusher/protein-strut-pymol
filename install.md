@@ -5,7 +5,7 @@ The requirements - install in order (Ubuntu 20.04)
 -- needs C++ compiler
 GCC is pre-installed on linux - to check:
 
-$ g++ -v
+	g++ -v
 
 tested on gcc 9.3.0
 
@@ -17,13 +17,13 @@ https://cmake.org/download/
 
 or:
 
-$ sudo apt-get install cmake 
+	sudo apt-get install cmake 
 
 cmake version 3.16.3
 
 -- Boost Libraries version 1.70 ot higher
 
-sudo apt-get install libboost-all-dev
+	sudo apt-get install libboost-all-dev
 
 1.71 installed
 
