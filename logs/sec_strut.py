@@ -59,52 +59,45 @@ def helix(in_list):
             helix_list.append(temp)
             temp = []
             temp.append([res[0], res[1], res[-3], res[-2], res[-1]])
+    helix_list.append(temp)
     return helix_list, scraps
 
 def sheet_loop(in_list):
-    sheet_list, temp_list, temp_sheet = [], [], []
-    for t_sheet in in_list:
-        if t_sheet not in temp_list:
-            temp_list.append(t_sheet)
-        for n_sheet in temp_list:
-            for t_res in t_sheet:
-                if t_res in n_sheet:
-                    continue
-                elif t_res[1] in n_sheet:
-                    n_sheet.append(t_res)
+    sheet_list, temp_list, temp_sheets_c = [], [], []
+    for res in in_list:
+        if len(sheet_list) == 0:
+            sheet_list.append(res)
+        else:
+            for sheet in sheet_list:
+                temp_sheet = []
+                temp = set.intersection(*[set(list) for list in [res,sheet]])
+                if len(temp) > 0:
+                    oom = sheet + res
+                    temp_sheet.append(oom)
+                    print("true")
                 else:
-                    temp_list.append([t_res])
-        
+                    temp_sheet.append(res)
+                temp_sheets_c.append(temp_sheet)
+    
+    print(temp_sheets_c) 
+    print(temp_sheet)
     return temp_list
             
 
 def sheets(in_list):
-    sheet_list, temp_sheet, scraps, temp = [], [], [], []
+    sheet_list, temp_sheet, scraps, temp, oom = [], [], [], [], []
         
     for res in in_list:
         if "E" in res[2]:
                 temp_sheet.append(res)
         else:
             scraps.append(res)
-    
     for res in temp_sheet:
-        if len(sheet_list) == 0:
-            temp.append(str(res[1])+res[0])
-            temp.append(str(res[3])+res[0])
-            temp.append(res[4])
-            sheet_list.append(temp)
-        for lst in sheet_list:
-            if str(res[1])+res[0] in lst:
-                lst.append(str(res[3])+res[0])
-                lst.append(str(res[4]))
-            elif str(res[3])+res[0] in lst:
-                lst.append(str(res[1])+res[0])
-                lst.append(str(res[4]))
-            elif str(res[4]) in lst:
-                lst.append(str(res[1])+res[0])
-                lst.append(str(res[3])+res[0])
-            else:
-                temp_sheet.append([str(res[1])+res[0], str(res[3])+res[0], res[4]])
+        temp = [str(res[1])+res[0], str(res[3])+res[0], res[4]] 
+        sheet_list.append(temp)
+                    
+    sheet_loop(sheet_list)    
+        
     return temp_sheet, scraps
 
 
@@ -114,7 +107,7 @@ def main():
     extract = extract_info(file_list_1)
     
     helices, scraps = helix(extract)
-    #b_sheets, leftovers = sheets(scraps)
+    b_sheets, leftovers = sheets(scraps)
     file_output(helices)
     #rebuilt_1, num, info = rebuild_lists(file_list_1)
     #arrange_1 = arrange_data(num, info, rebuilt_1)
