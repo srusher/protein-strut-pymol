@@ -29,8 +29,8 @@ def alpha_struts(alphas):
         pymol.cmd.alter("resi"+str(i[0][1])+'-'+str(i[y][1])+"/", "ss='H'")
         pymol.cmd.rebuild()
         
-        #Use sub-list length to add struts to the given helix
-        helix = [CYLINDER, float(i[0][2]),float(i[0][3]),float(i[0][4]),float(i[y][2]),float(i[y][3]),float(i[y][4]),0.75,1,0,0,1,0,0]
+        #Use sub-list length to add struts to the given helix, strut default color is white.
+        helix = [CYLINDER, float(i[0][2]),float(i[0][3]),float(i[0][4]),float(i[y][2]),float(i[y][3]),float(i[y][4]),0.75,1,1,1,1,1,1]
         strutName = 'helixStrut'+ str(count)
         pymol.cmd.load_cgo(helix, str(strutName))
         count +=1
