@@ -10,9 +10,6 @@ def alpha_struts(alphas):
 
     alpha_list = alphas
     
-    #Determine length of the list
-    x = len(alpha_list)
-    
     #Parse list and change secondary structure designations
     print('Reassigning alpha helix atoms based on DSSP output...')
     i=0
@@ -27,6 +24,7 @@ def alpha_struts(alphas):
             
         #Use sub-list lengths to convert residues to alpha helix designation in pymol
         pymol.cmd.alter("resi"+str(i[0][1])+'-'+str(i[y][1])+"/", "ss='H'")
+        cmd.sort()
         pymol.cmd.rebuild()
         
         #Use sub-list length to add struts to the given helix, strut default color is white.
