@@ -1,0 +1,41 @@
+#Insert struts to protein model based on modified DSSP output
+
+#Import required modules
+import sys
+from pymol import cmd
+from pymol.cgo import*
+  
+#Refine and structurally support alpha helicies
+def alpha_struts(alphas):
+
+    alpha_list = alphas
+    
+    #Determine length of the list
+    x = len(alpha_list)
+    
+    #Parse list and change secondary structure designations
+    print('Reassigning alpha helix atoms based on DSSP output...')
+    i=0
+    count = 1
+    helix = []
+    for i in alpha_list:
+        j=0
+        y=-1
+        #iterate through sub-list to find length
+        for j in i:
+            y +=1
+            
+        #Use sub-list lengths to convert residues to alpha helix designation in pymol
+        pymol.cmd.alter("resi"+str(i[0][1])+'-'+str(i[y][1])+"/", "ss='H'")
+        pymol.cmd.rebuild()
+        
+        #Use sub-list length to add struts to the given helix
+        helix = [CYLINDER, float(i[0][2]),float(i[0][3]),float(i[0][4]),float(i[y][2]),float(i[y][3]),float(i[y][4]),0.75,1,0,0,1,0,0]
+        strutName = 'helixStrut'+ str(count)
+        pymol.cmd.load_cgo(helix, str(strutName))
+        count +=1
+        
+    #Reset view    
+    cmd.reset()    
+    print('Alpha helix reassignment and strut insertion completed.')
+    return    
