@@ -22,6 +22,6 @@ command = "mkdssp --output-format=dssp "
 def main():
     os.system(command + file_pdb + " > " + dssp_out)
     os.system("python3 sec_strut.py " + dssp_out)
-    os.system("python3 loop_bridge.py " + "loop_output.txt")
+    #os.system("python3 loop_bridge.py " + "loop_output.txt")
 
 main()
