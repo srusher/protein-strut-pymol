@@ -184,7 +184,12 @@ def disordered(full_list, scrap_list):
             loop = []
             loop.append(item_l)            
             j = item_l[1]
-    return loops, gaps
+            
+    # finds loop ends 
+    loop_ends = []
+    for i in loops:
+        loop_ends.append([i[0], i[-1]])
+    return loop_ends, gaps
 
 
 # Main fxn        
