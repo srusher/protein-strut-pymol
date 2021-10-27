@@ -12,11 +12,9 @@ def alpha_struts(alphas):
     
     #Parse list and change secondary structure designations
     print('Reassigning alpha helix atoms based on DSSP output...')
-    i=0
     count = 1
     helix = []
     for i in alpha_list:
-        j=0
         y=-1
         #iterate through sub-list to find length
         for j in i:
