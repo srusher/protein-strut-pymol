@@ -5,15 +5,15 @@ import sys
 from pymol import cmd
 from pymol.cgo import*
   
-#Refine and structurally support alpha helicies
-def alpha_struts(alphas):
+#Refine and structurally support Secondary Structures
+def sec_struts(alphas, betas):
 
+    #Alpha Supports
     alpha_list = alphas
     
     #Parse list and change secondary structure designations
     print('Reassigning alpha helix atoms based on DSSP output...')
     count = 1
-    helix = []
     for i in alpha_list:
         y=-1
         #iterate through sub-list to find length
@@ -26,18 +26,17 @@ def alpha_struts(alphas):
         pymol.cmd.rebuild()
         
         #Use sub-list length to add struts to the given helix, strut default color is white.
-        helix = [CYLINDER, float(i[0][2]),float(i[0][3]),float(i[0][4]),float(i[y][2]),float(i[y][3]),float(i[y][4]),0.75,1,1,1,1,1,1]
+        helix = [CYLINDER, i[0][2],i[0][3],i[0][4],i[y][2],i[y][3],i[y][4],0.8,1,1,1,1,1,1]
         strutName = 'helixStrut'+ str(count)
         pymol.cmd.load_cgo(helix, str(strutName))
         count +=1
+        cmd.rebuild()
         
     #Reset view    
     cmd.reset()    
     print('Alpha helix reassignment and strut insertion completed.')
-    return
     
- #Function to add struts to beta sheets   
- def beta_struts(betas):
+    #Beta supports
     print('Strutting beta sheets based on DSSP output...')
     beta_list = betas
     
@@ -82,4 +81,4 @@ def alpha_struts(alphas):
 
     cmd.reset()
     print("Beta strutting completed.")
-    return 
+    return
