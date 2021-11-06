@@ -46,6 +46,10 @@ def sec_struts(alphas, betas):
         #Find number of values in the sub-list
         x=len(i)
         
+        #Reassign C-alpha to sheet designation in PyMOL
+        for j in i:
+            cmd.alter("resi"+str([1])+"/", "ss='S'")  
+        
         #find midpoint of the sub-list, round to nearest whole number
         mid = round(x/2)
         midResis.append(i[mid])
