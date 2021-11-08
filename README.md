@@ -1,2 +1,2 @@
 # noodle-strut
-Software to insert supportive struts for printing 3D models of protein molecules
+An interactive 3D printing structural support module for PyMOL
